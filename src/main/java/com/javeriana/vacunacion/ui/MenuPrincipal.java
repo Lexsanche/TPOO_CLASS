@@ -53,6 +53,9 @@ public class MenuPrincipal {
                     consultarRegistroVacunacion();
                     break;
                 case 7:
+                    borrarVacuna();
+                    break;
+                case 8:
                     System.out.println("Saliendo del sistema...");
                     return;
                 default:
@@ -101,7 +104,6 @@ public class MenuPrincipal {
         System.out.println("Datos de Contacto: " + ciudadano.getDatosContacto());
         System.out.println("Edad: " + ciudadano.getEdad());
     }
-
     private void registrarCiudadano(String ID) {
         System.out.println("\nRegistro de Nuevo Ciudadano");
         System.out.print("Nombre: ");
@@ -151,6 +153,20 @@ public class MenuPrincipal {
         System.out.println("Registro de vacunación exitoso.");
     }
 
+    private void borrarVacuna(){
+        System.out.println("\nEliminar una Vacuna del sistema");
+        System.out.print("Ingrese el ID de la Vacuna: ");
+        String IDvac = scanner.nextLine();
+        Vacuna vacuna = vacunaServicio.buscarPorID(IDvac);
+
+        if (vacuna == null) {
+            System.out.println("La vacuna no está registrada en el sistema. Por favor, regístrela primero.");
+            return;
+        }
+
+        vacunaServicio.eliminarVacuna(IDvac);
+        System.out.println("Se ha eliminado la vacuna con exito");
+    }
     private void consultarRegistroVacunacion() {
         System.out.println("\nConsulta de Registro de Vacunación por Ciudadano");
         System.out.print("Ingrese el ID del ciudadano: ");

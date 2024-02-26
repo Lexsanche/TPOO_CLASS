@@ -48,7 +48,7 @@ public class VacunaServicio {
     }
 
     // Opcional: Eliminar una vacuna del sistema por su nombre
-    public boolean eliminarVacuna(String nombre) {
-        return vacunas.removeIf(vacuna -> vacuna.getNombre().equalsIgnoreCase(nombre));
+    public boolean eliminarVacuna(String ID) {
+        return vacunas.removeIf(vacuna -> vacuna.getID().equalsIgnoreCase(ID));
     }
 }
